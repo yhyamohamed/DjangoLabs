@@ -1,0 +1,14 @@
+{% extends 'todo/base.html'%}
+
+{% block title %} Task-{{task.name}} {% endblock %}
+
+{% block content %}
+
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">{{task.name}} </h5>
+    <p class="card-text">{{task.description}} </p>
+    <a href="{% url 'todo:all-tasks' %}" class="btn btn-primary">Go Back</a>
+  </div>
+</div>
+{% endblock %}
