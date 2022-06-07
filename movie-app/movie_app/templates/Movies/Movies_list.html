@@ -1,0 +1,50 @@
+{% extends 'base_layout.html'%}
+
+{% block title %} Movies {% endblock %}
+{% block content %}
+{% if messages %}
+
+{% for message in messages %}
+{% if message.tags == 'info' %}
+<div class="alert alert-danger" role="alert">
+    {% else %}
+    <div class="alert alert-{{ message.tags }}" role="alert">
+        {% endif %}
+        {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
+    <div class="container mt-4 bg-info shadow-lg p-3 mb-5 rounded ">
+        <div class="col-4">
+
+            <a class="btn btn-sm btn-success col-4 ms-3 shadow-lg "
+               href="{% url 'Movies:create' %}">Add-A movie</a>
+        </div>
+        <div class="row p-2">
+            {% for movie in movies %}
+            <div class="card col-3 me-2 border-2 border-primary p-1">
+                <div class="card-body">
+                    <h5 class="card-title">{{movie.name}} - {{movie.production_year | date:"d M Y"}}</h5>
+                    <p class="card-text"> <small class="text-muted">creation time : </small>{{ movie.creation_time | date:"D d M Y" }}</p>
+                    <p class="card-text"><small class="text-muted">update time : </small>{{ movie.update_time | date:"D d M Y"}}</p>
+                    <small class="text-muted">Actors : </small>
+                     {% for actor in movie.actors.all %}
+                    <h5 class="badge rounded-pill bg-info text-dark"> {{ actor.name }}</h5>
+                    {% endfor %}
+                    <br>
+                        <small class="text-muted">Director : </small>
+
+                    <h5 class="badge rounded-pill bg-warning text-dark"> {{ movie.director }}</h5>
+
+                    <br>
+                    <a class="btn btn-sm btn-primary col-4 ms-3 shadow-lg "
+                       href="{% url 'Movies:edit-movie' movie.id  %}">Edit</a>
+                    <a class="btn btn-sm btn-danger col-4 ms-3 shadow-lg "
+                       href="{% url 'Movies:delete-movie' movie.id  %}">Delete</a>
+                </div>
+            </div>
+            {% endfor%}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base_layout.html'%}
+
+{% block title %} Actors {% endblock %}
+{% block content %}
+{% if messages %}
+
+{% for message in messages %}
+{% if message.tags == 'info' %}
+<div class="alert alert-danger" role="alert">
+    {% else %}
+    <div class="alert alert-{{ message.tags }}" role="alert">
+        {% endif %}
+        {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
+    <div class="container mt-4 bg-info shadow-lg p-3 mb-5 rounded ">
+        <div class="col-4">
+
+            <a class="btn btn-sm btn-success col-4 ms-3 shadow-lg "
+               href="{% url 'Actors:create' %}">Add-Actor</a>
+        </div>
+        <div class="row p-2">
+            {% for actor in actors %}
+            <div class="card col-3 me-2 border-2 border-primary p-1">
+                <img src="{{ actor.profile_picture.url}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{actor.name}}-{{actor.gender}}</h5>
+                    <p class="card-text">{{ actor.id}}</p>
+                    <a class="btn btn-sm btn-primary col-4 ms-3 shadow-lg "
+                       href="{% url 'Actors:edit-actor' actor.id  %}">Edit</a>
+                    <a class="btn btn-sm btn-danger col-4 ms-3 shadow-lg "
+                       href="{% url 'Actors:delete-actor' actor.id  %}">Delete</a>
+                </div>
+            </div>
+            {% endfor%}
+        </div>
+    </div>
+</div>
+{% endblock %}

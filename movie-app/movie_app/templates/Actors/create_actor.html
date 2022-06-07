@@ -1,0 +1,15 @@
+{% extends 'base_layout.html'%}
+
+{% block title %} Adding-Actors {% endblock %}
+{% block content %}
+<div class="container mt-4 bg-info shadow-lg p-3 mb-5 rounded">
+    <h5 class="shadow-lg col-2 "> Adding Actor : </h5>
+    <form action="{% url 'Actors:create' %}" method="post" class="col-8 offset-2" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit" class="btn btn-sm btn-success col-4 offset-2 shadow-lg ">Add</button>
+        <a class="btn btn-sm btn-danger col-4 ms-3 shadow-lg " href="{% url 'Actors:all-Actors' %}">Cancel</a>
+    </form>
+</div>
+
+{% endblock %}

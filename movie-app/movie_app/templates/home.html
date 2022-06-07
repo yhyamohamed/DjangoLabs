@@ -1,0 +1,34 @@
+{% extends 'base_layout.html'%}
+
+{% block title %} Movie-App {% endblock %}
+{% block content %}
+<div class="col-10 offset-1 mt-1">
+    <div
+            id="carouselExampleDark"
+            class="carousel carousel-dark slide"
+            data-bs-ride="carousel"
+
+    >
+        <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="10000" style="height: 90vh;">
+                <img src="/media/background-1.jpg" class="d-block w-100 img-fluid h-100" alt="..."/>
+                <div class="carousel-caption d-none d-md-block">
+                    <h6 class="fs-1 d-block text-white text-decoration-none" href="#">
+                        Movie Lib
+                    </h6>
+                    <h5
+                            class="fs-4 font-monospace text-white text-decoration-none shadow-lg"
+
+                    >
+                        Some stuff we find awesome
+                    </h5>
+                    <a type="submit" class="btn btn-sm btn-success col-4 offset-1 shadow-lg "
+                       href="{% url 'Movies:all-Movies' %}">Movies</a>
+                    <a class="btn btn-sm btn-primary col-4 ms-3 shadow-lg "
+                       href="{% url 'Actors:all-Actors' %}">Actors</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
