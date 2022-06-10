@@ -36,9 +36,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Actors',
-    'Movies'
+    'Movies',
+    'Accounts',
+    'crispy_forms'
 ]
-
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -118,8 +120,19 @@ STATICFILES_DIRS = (
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = 'login'
+
+#email
+EMAIL_HOST='localhost'
+EMAIL_PORT = 1020
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD=''
+EMAIL_USE_TLS = False
+# EMAIL_USE_SSL = False
+#run python -m smtpd -n -c DebuggingServer localhost:1020

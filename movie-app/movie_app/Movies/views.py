@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, reverse
 
 from .forms import MovieForm
@@ -10,7 +11,7 @@ def index(request):
     print(movies)
     return render(request, 'Movies/Movies_list.html', {'movies': movies})
 
-
+@login_required
 def add_movie(request):
     if request.method == 'POST':
         form = MovieForm(request.POST, request.FILES)

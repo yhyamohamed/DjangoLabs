@@ -11,5 +11,5 @@ class MovieForm(forms.ModelForm):
             'name': forms.TextInput(attrs={'class': 'form-control'}),
             'actors': forms.SelectMultiple(attrs={'class': 'form-select '}),
             'production_year': forms.DateTimeInput(attrs={'class': 'form-control', 'type': 'date'}),
-            'director': forms.TextInput(attrs={'class': 'form-control'}),
+            'director': forms.Select(attrs={'class': 'form-select '}),
         }

@@ -1,0 +1,26 @@
+{% extends 'base_layout.html'%}
+
+{% block title %}login{% endblock %}
+{% block content %}
+{% load crispy_forms_tags %}
+<div class="container mt-5 ">
+    <div class="row">
+        <div class="col-8 offset-2 text-white">
+            <form method="post" class="uniForm mb-1 " action="{% url 'login'%}">
+                {% csrf_token %}
+                {{ form | crispy}}
+
+                <div class="col-5 mt-3 offset-4">
+                    <button type="submit" class=" d-inline btn btn-sm btn-success col-4 ms-3 shadow-lg "
+                    >Login
+                    </button>
+
+
+                </div>
+            </form>
+            <h6 class="col-4 offset-3  d-inline" > don't Have An-Account ?
+            </h6> <a class="nav-link d-inline" href="{% url 'accounts:signup' %}">Register</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
