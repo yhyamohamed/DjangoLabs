@@ -38,7 +38,10 @@ INSTALLED_APPS = [
     'Actors',
     'Movies',
     'Accounts',
-    'crispy_forms'
+    'crispy_forms',
+    'rest_framework',
+    'rest_framework.authtoken'
+
 ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 MIDDLEWARE = [
@@ -128,11 +131,19 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = 'login'
 
-#email
-EMAIL_HOST='localhost'
+# email
+EMAIL_HOST = 'localhost'
 EMAIL_PORT = 1020
 EMAIL_HOST_USER = ''
-EMAIL_HOST_PASSWORD=''
+EMAIL_HOST_PASSWORD = ''
 EMAIL_USE_TLS = False
 # EMAIL_USE_SSL = False
-#run python -m smtpd -n -c DebuggingServer localhost:1020
+# run python -m smtpd -n -c DebuggingServer localhost:1020
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES':
+        ['rest_framework.authentication.TokenAuthentication'],
+    'DEFAULT_PERMISSION_CLASSES':
+        ['rest_framework.permissions.IsAuthenticated']
+}
+AUTH_USER_MODEL = 'Accounts.User'

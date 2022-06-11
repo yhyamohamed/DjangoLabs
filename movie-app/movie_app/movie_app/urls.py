@@ -11,7 +11,10 @@ urlpatterns = [
     path('accounts/', include('Accounts.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('Actors/', include('Actors.urls')),
-    path('Movies/', include('Movies.urls'))
+    path('Movies/', include('Movies.urls')),
+    path('api/movies/', include('Movies.api.v1.urls')),
+    path('api/accounts/', include('Accounts.api.v1.urls')),
+    path('api/actors/', include('Actors.api.v1.urls')),
 ]
 urlpatterns += staticfiles_urlpatterns()
 
